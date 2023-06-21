@@ -94,3 +94,4 @@ while ready_bool is False:
 
 print('\nGood you goof.. I am working on the rest. Maybe try saying no?')
 
+input('')
