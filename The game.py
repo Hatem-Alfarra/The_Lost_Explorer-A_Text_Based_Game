@@ -10,10 +10,10 @@ inventory = []
 # repeatable and variables
 not_valid = "Your answer is not valid"
 
-s = 0.8 # speed: Used for text_typer
+s = 1/18 # speed: Used for text_typer. The lower the number the faster the text appears
 
 # Functions
-def text_typer(text, time):
+def text_typer(text):
     """
     Purpose: To print text like it is being typed (not in bursts).
 
@@ -25,7 +25,7 @@ def text_typer(text, time):
     :return: none
     """
     for letter in text:
-        t.sleep(time * s) # Ideal is time * 0.8.
+        t.sleep(s) # Ideal is time * 0.8.
         print(letter, end='')
 
 def type_open():
@@ -66,7 +66,7 @@ player_name = input('Name: ')
 print(line, '\n\n')
 Hello_explorer = 'Hello ' + player_name + '!'
 
-text_typer(Hello_explorer, 0.09)
+text_typer(Hello_explorer)
 print('\n')
 
 
@@ -77,7 +77,7 @@ print('\n')
 ask_ready = 'This is a text-based game. Are you ready for the adventure?  (yes/no)\n'
 ready_bool = False
 quit_counter = 0
-text_typer(ask_ready, 0.03)
+text_typer(ask_ready)
 
 while ready_bool is False:
 
@@ -104,17 +104,17 @@ while ready_bool is False:
             quit()
         else:
             if quit_counter == 0:
-                text_typer(emm, 0.1)
-                text_typer(not_expected, 0.02)
+                text_typer(emm)
+                text_typer(not_expected)
             elif quit_counter == 1:
-                text_typer(clear_throat, 0.01)
+                text_typer(clear_throat)
             elif quit_counter == 2:
-                text_typer(emm, 0.08)
-                text_typer(help, 0.015)
+                text_typer(emm)
+                text_typer(help)
             elif quit_counter == 3:
-                text_typer(angry, 0.03)
+                text_typer(angry)
             elif quit_counter == 4:
-                text_typer(last_chance, 0.04)
+                text_typer(last_chance)
 
 
     quit_counter += 1
@@ -126,32 +126,32 @@ self_message_1 =str(player_name + ": This damn radio! Hi! Do you copy?\n\n")
 
 print("\n\n")
 print(line)
-text_typer(Chapter, 0.1)
+text_typer(Chapter)
 print(line)
 print("\n")
 
 
 # Radio
 
-text_typer(radio_message_1, 0.07)
-text_typer(self_message_1, 0.07)
+text_typer(radio_message_1)
+text_typer(self_message_1)
 
 step_away = 'no'
 
 while step_away == 'no':
 
     script_1 = "The door of the cabin is creaking. The strong wind can be heard through the thin walls rustling. Rain and water droplets from the waves bounce off the rooftop. \n"
-    text_typer(script_1, 0.03)
+    text_typer(script_1)
     script_2 = "The light above you is flickering, and it seems like the storm is only getting worse.\n"
-    text_typer(script_2, 0.03)
+    text_typer(script_2)
 
     try_radio = "You give the radio another shot. No success....\nThe tiny lightbulb on the device is glowing red.\n\n"\
                 + player_name + ": It must be the antenna. I should check it out; the storm is not winding down any " \
                                 "time soon.\n\n"
-    text_typer(try_radio, 0.04)
+    text_typer(try_radio)
 
     step_away_message = 'Do you step away from the radio? (yes/no)'
-    text_typer(step_away_message, 0.03)
+    text_typer(step_away_message)
     step_away = input('\n').strip().lower()
 
     if step_away == 'yes':
@@ -161,20 +161,20 @@ while step_away == 'no':
         step_away = "no"
 
 
-successful_step_away = "\nYour heart is pounding. You dread every step towards the door, you know it must be done.\n"
+successful_step_away = "\nYour heart is pounding. You dread your every step towards the door, you know it must be done.\n"
 palm_approaching_the_door = "\nYour palm is approaching the door's handle... \n"
 remember_flashlight = 'As your hand is gripping the door handle you remember... There is a flashlight in the small closet on your right hand side!\nBelow the shelves is a small window that is made of very thick glass.\nThrough the window you see the water pouring outside. You catch a glimse of the moon that is almost entirely hidden by the thunder storms.\n\n' \
                       + player_name + ": Time to head out. I have to make it back quick.\n"
 grab_flashlight = "\nDo you grab the flashlight? (yes/no)\n"
 
-text_typer(successful_step_away, 0.07)
-text_typer(palm_approaching_the_door, 0.07)
-text_typer(remember_flashlight, 0.07)
+text_typer(successful_step_away)
+text_typer(palm_approaching_the_door)
+text_typer(remember_flashlight)
 
 out = False
 
 while out is False:
-    text_typer(grab_flashlight, 0.07)
+    text_typer(grab_flashlight)
     grab_flashlight_input = input("").strip().lower()
 
     if grab_flashlight_input == 'yes':
@@ -187,10 +187,10 @@ while out is False:
         elif sure_no == 'no':
             out = False
         else:
-            text_typer(not_valid, 0.08)
+            text_typer(not_valid)
             out = False
     else:
-        text_typer(not_valid, 0.08)
+        text_typer(not_valid)
         out = False
 
 print("To view your inventory type the word: 'inventory'\n"
@@ -201,15 +201,15 @@ type_open = type_open()
 access_inventory()
 
 leave_cabin = "Your hand grips the handle tightly... \nYou take a deep breath..\nYou turn the handle and open the door. Stepping out, you shut the door and it makes a loud thud behind you *thud*"
-text_typer(leave_cabin, 0.08)
+text_typer(leave_cabin)
 
 end_of_chapter_1 = '\n\nEnd of chapter 1'
-text_typer(end_of_chapter_1, 0.12)
+text_typer(end_of_chapter_1)
 
 Chapter = 'CHAPTER 2'
 print("\n\n")
 print(line)
-text_typer(Chapter, 0.1)
+text_typer(Chapter)
 print('')
 print(line)
 print("\n")
