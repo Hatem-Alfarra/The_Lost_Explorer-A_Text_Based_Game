@@ -4,21 +4,15 @@ import random as r
 import time as t
 
 
+# Inventory initializing
+inventory = []
 
-# Welcome message
+# repeatable and variables
+not_valid = "Your answer is not valid"
 
-print('\n\nThe Lost Explorer: Quest in the Forgotten Island')
-line = '*******************************************************'
-print(line)
+s = 0.8 # speed: Used for text_typer
 
-
-
-
-
-# Main information collection
-
-print('')
-
+# Functions
 def text_typer(text, time):
     """
     Purpose: To print text like it is being typed (not in bursts).
@@ -31,9 +25,42 @@ def text_typer(text, time):
     :return: none
     """
     for letter in text:
-        t.sleep(time)
+        t.sleep(time * s) # Ideal is time * 0.8.
         print(letter, end='')
 
+def type_open():
+    """
+    Purpose: to type commands at any time during the game
+    :return: word to be examined by other functions
+    """
+    type_open = input('').lower().strip()
+    return type_open
+
+def access_inventory():
+    """
+    Purpose: To view inventory (inventory is a list)
+    Pre-condition: None
+    Post-condition: if type_open is set to the string inventory, the inventory is open
+    :return: None
+    """
+
+    if type_open == "inventory":
+        print('')
+        print(inventory)
+        print('')
+
+
+
+# Welcome message
+
+print('\n\nThe Lost Explorer: Quest in the Forgotten Island')
+line = '*******************************************************'
+print(line)
+
+
+# Main information collection
+
+print('')
 
 player_name = input('Name: ')
 print(line, '\n\n')
@@ -92,6 +119,97 @@ while ready_bool is False:
 
     quit_counter += 1
 
-print('\nGood you goof.. I am working on the rest. Maybe try saying no?')
+# Story begins. CHAPTER 1.
+Chapter = ("Chapter 1\n").upper()
+radio_message_1 = "UNKNOWN: Shhhh.. Shhh... H-Shh lo.. ..483? \n\tHel.. Sh.. Hello!\n\n"
+self_message_1 =str(player_name + ": This damn radio! Hi! Do you copy?\n\n")
 
-input('')
+print("\n\n")
+print(line)
+text_typer(Chapter, 0.1)
+print(line)
+print("\n")
+
+
+# Radio
+
+text_typer(radio_message_1, 0.07)
+text_typer(self_message_1, 0.07)
+
+step_away = 'no'
+
+while step_away == 'no':
+
+    script_1 = "The door of the cabin is creaking. The strong wind can be heard through the thin walls rustling. Rain and water droplets from the waves bounce off the rooftop. \n"
+    text_typer(script_1, 0.03)
+    script_2 = "The light above you is flickering, and it seems like the storm is only getting worse.\n"
+    text_typer(script_2, 0.03)
+
+    try_radio = "You give the radio another shot. No success....\nThe tiny lightbulb on the device is glowing red.\n\n"\
+                + player_name + ": It must be the antenna. I should check it out; the storm is not winding down any " \
+                                "time soon.\n\n"
+    text_typer(try_radio, 0.04)
+
+    step_away_message = 'Do you step away from the radio? (yes/no)'
+    text_typer(step_away_message, 0.03)
+    step_away = input('\n').strip().lower()
+
+    if step_away == 'yes':
+        break
+    elif step_away != 'no':
+        print("\nValid answers: 'yes' and 'no'")
+        step_away = "no"
+
+
+successful_step_away = "\nYour heart is pounding. You dread every step towards the door, you know it must be done.\n"
+palm_approaching_the_door = "\nYour palm is approaching the door's handle... \n"
+remember_flashlight = 'As your hand is gripping the door handle you remember... There is a flashlight in the small closet on your right hand side!\nBelow the shelves is a small window that is made of very thick glass.\nThrough the window you see the water pouring outside. You catch a glimse of the moon that is almost entirely hidden by the thunder storms.\n\n' \
+                      + player_name + ": Time to head out. I have to make it back quick.\n"
+grab_flashlight = "\nDo you grab the flashlight? (yes/no)\n"
+
+text_typer(successful_step_away, 0.07)
+text_typer(palm_approaching_the_door, 0.07)
+text_typer(remember_flashlight, 0.07)
+
+out = False
+
+while out is False:
+    text_typer(grab_flashlight, 0.07)
+    grab_flashlight_input = input("").strip().lower()
+
+    if grab_flashlight_input == 'yes':
+        inventory.append("flashlight")
+        out = True
+    elif grab_flashlight_input == 'no':
+        sure_no = input('Are you sure you would like to step out without a flashlight? (yes/no)\n')
+        if sure_no == 'yes':
+            out = True
+        elif sure_no == 'no':
+            out = False
+        else:
+            text_typer(not_valid, 0.08)
+            out = False
+    else:
+        text_typer(not_valid, 0.08)
+        out = False
+
+print("To view your inventory type the word: 'inventory'\n"
+      "Try it out - ")
+
+
+type_open = type_open()
+access_inventory()
+
+leave_cabin = "Your hand grips the handle tightly... \nYou take a deep breath..\nYou turn the handle and open the door. Stepping out, you shut the door and it makes a loud thud behind you *thud*"
+text_typer(leave_cabin, 0.08)
+
+end_of_chapter_1 = '\n\nEnd of chapter 1'
+text_typer(end_of_chapter_1, 0.12)
+
+Chapter = 'CHAPTER 2'
+print("\n\n")
+print(line)
+text_typer(Chapter, 0.1)
+print('')
+print(line)
+print("\n")
