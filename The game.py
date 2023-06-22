@@ -99,7 +99,7 @@ while ready_bool is False:
             print(line)
             print("\n* ACHIEVEMENT: The I'm-no-quitter-when-it-comes-to-quitting ending *")
             print(('\nThanks for playing!').upper())
-            print('\n')
+            print('')
             print(line)
             quit()
         else:
@@ -122,7 +122,7 @@ while ready_bool is False:
 # Story begins. CHAPTER 1.
 Chapter = ("Chapter 1\n").upper()
 radio_message_1 = "UNKNOWN: Shhhh.. Shhh... H-Shh lo.. ..483? \n\tHel.. Sh.. Hello!\n\n"
-self_message_1 =str(player_name + ": This damn radio! Hi! Do you copy?\n\n")
+self_message_1 =str(player_name + ": This damn radio! Hi! Do you copy?\n")
 
 print("\n\n")
 print(line)
@@ -140,7 +140,7 @@ step_away = 'no'
 
 while step_away == 'no':
 
-    script_1 = "The door of the cabin is creaking. The strong wind can be heard through the thin walls rustling. Rain and water droplets from the waves bounce off the rooftop. \n"
+    script_1 = "\nThe door of the cabin is creaking. The strong wind can be heard through the thin walls rustling. Rain and water droplets from the waves bounce off the rooftop. \n"
     text_typer(script_1)
     script_2 = "The light above you is flickering, and it seems like the storm is only getting worse.\n"
     text_typer(script_2)
@@ -163,7 +163,7 @@ while step_away == 'no':
 
 successful_step_away = "\nYour heart is pounding. You dread your every step towards the door, you know it must be done.\n"
 palm_approaching_the_door = "\nYour palm is approaching the door's handle... \n"
-remember_flashlight = 'As your hand is gripping the door handle you remember... There is a flashlight in the small closet on your right hand side!\nBelow the shelves is a small window that is made of very thick glass.\nThrough the window you see the water pouring outside. You catch a glimse of the moon that is almost entirely hidden by the thunder storms.\n\n' \
+remember_flashlight = 'As your hand is gripping the door handle you remember... There is a flashlight in the small closet on your right hand side!\nBelow the shelves is a small window that is made of very thick glass.\nThrough the window you see the water pouring outside. You catch a glimse of the moon that is almost entirely hidden by the thunder storm.\n\n' \
                       + player_name + ": Time to head out. I have to make it back quick.\n"
 grab_flashlight = "\nDo you grab the flashlight? (yes/no)\n"
 
@@ -193,9 +193,9 @@ while out is False:
         text_typer(not_valid)
         out = False
 
-print("To view your inventory type the word: 'inventory'\n"
-      "Try it out - ")
+try_out_inventory = "To view your inventory type the word: 'inventory'\nTry it out - "
 
+text_typer(try_out_inventory)
 
 type_open = type_open()
 access_inventory()
