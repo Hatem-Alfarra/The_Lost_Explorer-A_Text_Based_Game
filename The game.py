@@ -182,7 +182,6 @@ at_radio()
 
 first_pass_radio += 1
 
-
 successful_step_away = "\nYour heart is pounding. You dread your every step towards the door, you know it must be done.\n"
 text_typer(successful_step_away)
 
@@ -240,7 +239,6 @@ def safe():
         else:
             text_typer(not_valid)
             return True
-
 
 safe()
 
@@ -304,6 +302,8 @@ access_inventory()
 
 leaving_cabin_statement = "Your hand grips the handle tightly... \nYou take a deep breath..\nYou turn the handle and open the door. Stepping out, you shut the door and it makes a loud thud behind you *thud*"
 text_typer(leaving_cabin_statement)
+
+
 
 end_of_chapter_1 = '\n\n\nEnd of chapter 1'.upper()
 text_typer(end_of_chapter_1)
