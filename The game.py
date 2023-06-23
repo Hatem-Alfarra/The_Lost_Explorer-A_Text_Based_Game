@@ -330,3 +330,5 @@ print(line)
 print("\n")
 
 
+# Ideas:
+# To make something interactive (ex. opening the door.) I can make a loop where every certain period of time an integer value decreases by 1. It is first initiated and then increases by 1 every time the player presses on the right botton or solves a puzzle (ex. math questions generated using the random module). For every (correct) answer the increase in 1 gets the player closer to the objective number. If the number reaches the objective number the task is complete. If the number reaches 0 the player fails and has to repeat this task. So, the door keeps shutting unless the player solves the puzzle fast enough
