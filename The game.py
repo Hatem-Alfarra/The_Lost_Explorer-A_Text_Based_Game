@@ -7,11 +7,12 @@ import time as t
 # Inventory initializing
 inventory = []
 in_room_location = []
+flashlight = ["flashlight"]
 
 # repeatable and variables
-not_valid = "Your answer is not valid"
+not_valid = "Your answer is not valid\n"
 
-s = 0 # speed: Used for text_typer. The lower the number the faster the text appears
+s = 0.04 # speed: Used for text_typer. The lower the number the faster the text appears
 
 # Functions
 def text_typer(text):
@@ -121,6 +122,8 @@ while ready_bool is False:
 
 
 
+
+
 # Story begins. CHAPTER 1.
 
 
@@ -182,12 +185,14 @@ at_radio()
 
 first_pass_radio += 1
 
-successful_step_away = "\nYour heart is pounding. You dread your every step towards the door, you know it must be done.\n"
+successful_step_away = "\nYour heart is pounding. You dread your every step towards the door; you know it must be done.\n"
 text_typer(successful_step_away)
 
 safe_content = ['first aid equipment', 'lighter']
 
 def safe_opened():
+
+    text_typer("The safe opened\n")
 
     text_typer("Which item would you like to grab?\nInstructions:'All' for all items; 'quit' to quit; otherwise type the item's name to grab the item specified ")
     text_typer("\nSafe content: ")
@@ -242,7 +247,7 @@ def safe():
 
 safe()
 
-palm_approaching_the_door = "\nYour palm is approaching the door's handle... \n"
+palm_approaching_the_door = "\nYour palm is almost touching the door's handle... \n"
 remember_flashlight = 'As your hand is gripping the door handle you remember... There is a flashlight in the small closet on your right hand side!\nBelow the shelves is a small window that is made of very thick glass.\nThrough the window you see the water pouring outside. You catch a glimpse of the moon that is almost entirely hidden by the thunder storm.\n\n' \
                       + player_name + ": Time to head out. I have to make it back quick.\n"
 grab_flashlight = "\nDo you grab the flashlight? (yes/no)\n"
@@ -251,34 +256,37 @@ grab_flashlight = "\nDo you grab the flashlight? (yes/no)\n"
 def leave_cabin():
     text_typer(palm_approaching_the_door)
     out = False
-    while out is False:
-        text_typer(remember_flashlight)
-        text_typer(grab_flashlight)
-        grab_flashlight_input = input("").strip().lower()
+    if "flashlight" not in inventory:
+        while out is False:
+            text_typer(remember_flashlight)
+            text_typer(grab_flashlight)
+            grab_flashlight_input = input("").strip().lower()
 
-        if grab_flashlight_input == 'yes':
-            inventory.append("flashlight")
-            out = True
-        elif grab_flashlight_input == 'no':
-            sure_no = input('Are you sure you would like to step out without a flashlight? (yes/no)\n')
-            if sure_no == 'yes':
+            if grab_flashlight_input == 'yes':
+                inventory.append("flashlight")
                 out = True
-            elif sure_no == 'no':
-                out = False
+            elif grab_flashlight_input == 'no':
+                sure_no = input('Are you sure you would like to step out without a flashlight? (yes/no)\n')
+                if sure_no == 'yes':
+                    out = True
+                elif sure_no == 'no':
+                    out = False
+                else:
+                    text_typer(not_valid)
+                    out = False
             else:
                 text_typer(not_valid)
                 out = False
-        else:
-            text_typer(not_valid)
-            out = False
-def head_where_in_cabin():
-    where_next = "\nWhere would you like to go next?\n"
-    locations_in_ch1_cabin = "1- The radio\n2- The safe\n3- The door\n\n"
 
+
+def head_where_in_cabin():
     while True:
+        where_next = "\nWhere would you like to go next?\n"
+        locations_in_ch1_cabin = "1- The radio\n2- The safe\n3- The door\n\n"
+
         text_typer(where_next)
         text_typer(locations_in_ch1_cabin)
-        next_location_address = input('')
+        next_location_address = input('').strip()
 
         if next_location_address == '1':
             at_radio()
@@ -286,9 +294,14 @@ def head_where_in_cabin():
             safe()
         elif next_location_address == '3':
             leave_cabin()
-            return False
+            leave_cabin_bool = input("\nExit the cabin? (yes/no)\n").lower().strip()
+            if leave_cabin_bool == 'yes':
+                break
+            elif leave_cabin_bool != 'no':
+                text_typer(not_valid)
         else:
             text_typer("Possible inputs are '1', '2', or '3'")
+
 
 head_where_in_cabin()
 
@@ -315,3 +328,5 @@ text_typer(Chapter)
 print('')
 print(line)
 print("\n")
+
+
