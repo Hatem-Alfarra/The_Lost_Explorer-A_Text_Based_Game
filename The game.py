@@ -197,7 +197,7 @@ def safe_opened():
     text_typer("Which item would you like to grab?\nInstructions:'All' for all items; 'quit' to quit; otherwise type the item's name to grab the item specified ")
     text_typer("\nSafe content: ")
     print(safe_content)
-    action_in_safe = input(''.strip().lower())
+    action_in_safe = input('').strip().lower()
 
     if action_in_safe == 'all':
         while len(safe_content) != 0:
