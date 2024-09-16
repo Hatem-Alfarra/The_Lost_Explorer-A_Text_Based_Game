@@ -12,7 +12,7 @@ flashlight = ["flashlight"]
 # repeatable and variables
 not_valid = "Your answer is not valid\n"
 
-s = 0.04 # speed: Used for text_typer. The lower the number the faster the text appears
+s = 0.05 # speed: Used for text_typer. The lower the number the faster the text appears
 
 # Functions
 def text_typer(text):
@@ -27,8 +27,8 @@ def text_typer(text):
     :return: none
     """
     for letter in text:
-        t.sleep(s) # Ideal is time * 0.8.
-        print(letter, end='')
+        t.sleep(s) # Ideal is time * 0.4.
+        print(letter, end='', flush=True)
 
 def type_open():
     """
@@ -321,6 +321,8 @@ text_typer(leaving_cabin_statement)
 end_of_chapter_1 = '\n\n\nEnd of chapter 1'.upper()
 text_typer(end_of_chapter_1)
 
+
+
 Chapter = 'CHAPTER 2'
 print("\n\n")
 print(line)
@@ -332,3 +334,14 @@ print("\n")
 
 # Ideas:
 # To make something interactive (ex. opening the door.) I can make a loop where every certain period of time an integer value decreases by 1. It is first initiated and then increases by 1 every time the player presses on the right botton or solves a puzzle (ex. math questions generated using the random module). For every (correct) answer the increase in 1 gets the player closer to the objective number. If the number reaches the objective number the task is complete. If the number reaches 0 the player fails and has to repeat this task. So, the door keeps shutting unless the player solves the puzzle fast enough
+
+# Its so hard to see. The boat is swaying in a way that makes it difficult to stay standing. It is quite dark but you can see a big wave incoming.
+# QUICK. HOLD ON TO THE HANDLE TO YOUR RIGHT. Every now and then the player would have a wave incoming and they have to quickly type a word such as 'grab' or 'hold'. Then for steps they might
+# have to time it properly. If the prompt is missed in the designated time they character falls down then gets back up losing some time until the next incoming wave. During a wave incoming the
+# player should not type 'step' or 'forward' otherwise they fall immediately.
+# Now the character should be able to use their inventory. If they grabbed the flashlight or/and a lighter the mechanic to use something in the inventory should be introduced. I am thinking they would
+# drop that item they are holding eventually. There should be an option to try to climb up to the antenna, and an option to use a stick instead. Should I make an option to through an object at the antenna lol.
+# Another mechanic could be how many times you can enter 'enter' before a timer runs out? idk how to do that though.
+#
+#
+#
